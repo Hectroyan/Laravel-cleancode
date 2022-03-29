@@ -1,28 +1,29 @@
 # Laravel-cleancode
 
 - [Laravel-cleancode](#laravel-cleancode)
-  - [2. Laravel coding standards](#2-laravel-coding-standards)
-    - [2.1 La forma de sintaxis mas corta](#21-la-forma-de-sintaxis-mas-corta)
-    - [2.2. Principio de responsabilidad unica](#22-principio-de-responsabilidad-unica)
-    - [2.3. FAT MODELS, SKINNY CONTROLLERS](#23-fat-models-skinny-controllers)
-    - [2.4. Validacion](#24-validacion)
-    - [2.5. La logica de negocio deve ir en una clase de Servicio](#25-la-logica-de-negocio-deve-ir-en-una-clase-de-servicio)
-    - [2.6. No te repitas](#26-no-te-repitas)
-    - [2.7. Haz preferente Elocuent vs Query Builder o rawSQL. Tanto como colecciones por encima de arrays.](#27-haz-preferente-elocuent-vs-query-builder-o-rawsql-tanto-como-colecciones-por-encima-de-arrays)
-    - [2.8. Asignacion en masa](#28-asignacion-en-masa)
-    - [2.9. NO EJECUTES QUERIES EN LOS ARCHIVOS BLADE CAUSAN EL (N + 1)](#29-no-ejecutes-queries-en-los-archivos-blade-causan-el-n--1)
-    - [2.10. Comenta tu codigo, pero haz preferente que el metodo y variables sean descriptivos](#210-comenta-tu-codigo-pero-haz-preferente-que-el-metodo-y-variables-sean-descriptivos)
-    - [2.11. Usa archivos de configuracion, lenguaje y constantes en lugar de hardcodear texto en el codigo](#211-usa-archivos-de-configuracion-lenguaje-y-constantes-en-lugar-de-hardcodear-texto-en-el-codigo)
-    - [2.12. Usa dentro de lo posible los paquetes y herramientas aceptadas por la comunidad](#212-usa-dentro-de-lo-posible-los-paquetes-y-herramientas-aceptadas-por-la-comunidad)
-    - [2.13. Usa IoC containers o facades en lugar de nuevas clases](#213-usa-ioc-containers-o-facades-en-lugar-de-nuevas-clases)
-    - [2.14. No traigas datos directamente del .env](#214-no-traigas-datos-directamente-del-env)
-    - [2.15. No traigas datos directamente del .env](#215-no-traigas-datos-directamente-del-env)
-    - [2.16. No traigas datos directamente del .env](#216-no-traigas-datos-directamente-del-env)
-    - [2.17. Guarda las fechas en formato standard. Usa mutadores y accesos para modificarlo.](#217-guarda-las-fechas-en-formato-standard-usa-mutadores-y-accesos-para-modificarlo)
-    - [2.18. Nunca pongas logica dentro de los archivos de ruta y nombralas](#218-nunca-pongas-logica-dentro-de-los-archivos-de-ruta-y-nombralas)
-    - [2.19. Minimiza el uso de PHP vanilla en las plantillas blade](#219-minimiza-el-uso-de-php-vanilla-en-las-plantillas-blade)
+  - [1. Laravel coding standards](#1-laravel-coding-standards)
+    - [1.1 La forma de sintaxis mas corta](#11-la-forma-de-sintaxis-mas-corta)
+    - [1.1. Principio de responsabilidad unica](#11-principio-de-responsabilidad-unica)
+    - [1.3. FAT MODELS, SKINNY CONTROLLERS](#13-fat-models-skinny-controllers)
+    - [1.4. Validacion](#14-validacion)
+    - [1.5. La logica de negocio deve ir en una clase de Servicio](#15-la-logica-de-negocio-deve-ir-en-una-clase-de-servicio)
+    - [1.6. No te repitas](#16-no-te-repitas)
+    - [1.7. Haz preferente Elocuent vs Query Builder o rawSQL. Tanto como colecciones por encima de arrays.](#17-haz-preferente-elocuent-vs-query-builder-o-rawsql-tanto-como-colecciones-por-encima-de-arrays)
+    - [1.8. Asignacion en masa](#18-asignacion-en-masa)
+    - [1.9. NO EJECUTES QUERIES EN LOS ARCHIVOS BLADE CAUSAN EL (N + 1)](#19-no-ejecutes-queries-en-los-archivos-blade-causan-el-n--1)
+    - [1.10. Comenta tu codigo, pero haz preferente que el metodo y variables sean descriptivos](#110-comenta-tu-codigo-pero-haz-preferente-que-el-metodo-y-variables-sean-descriptivos)
+    - [1.11. Usa archivos de configuracion, lenguaje y constantes en lugar de hardcodear texto en el codigo](#111-usa-archivos-de-configuracion-lenguaje-y-constantes-en-lugar-de-hardcodear-texto-en-el-codigo)
+    - [1.11. Usa dentro de lo posible los paquetes y herramientas aceptadas por la comunidad](#111-usa-dentro-de-lo-posible-los-paquetes-y-herramientas-aceptadas-por-la-comunidad)
+    - [1.13. Usa IoC containers o facades en lugar de nuevas clases](#113-usa-ioc-containers-o-facades-en-lugar-de-nuevas-clases)
+    - [1.14. No traigas datos directamente del .env](#114-no-traigas-datos-directamente-del-env)
+    - [1.15. No traigas datos directamente del .env](#115-no-traigas-datos-directamente-del-env)
+    - [1.16. No traigas datos directamente del .env](#116-no-traigas-datos-directamente-del-env)
+    - [1.17. Guarda las fechas en formato standard. Usa mutadores y accesos para modificarlo.](#117-guarda-las-fechas-en-formato-standard-usa-mutadores-y-accesos-para-modificarlo)
+    - [1.18. Nunca pongas logica dentro de los archivos de ruta y nombralas](#118-nunca-pongas-logica-dentro-de-los-archivos-de-ruta-y-nombralas)
+    - [1.19. Minimiza el uso de PHP vanilla en las plantillas blade](#119-minimiza-el-uso-de-php-vanilla-en-las-plantillas-blade)
+  - [2. Inserta este gitignore siempre en tu proyecto](#2-inserta-este-gitignore-siempre-en-tu-proyecto)
 
-## 2. Laravel coding standards
+## 1. Laravel coding standards
 
 Se deben usar siempre los standares PSR.
 
@@ -54,16 +55,18 @@ Se deben usar siempre los standares PSR.
 | Interfaz                      | adjetivo o nombre                                                                   | Authenticatable                         | AuthenticationInterface, IAuthentication        |
 | Trait                         | adjetivo                                                                            | Notifiable                              | NotificationTrait                               |
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.1 La forma de sintaxis mas corta
+### 1.1 La forma de sintaxis mas corta
 
 Intanta siempre que sea posible usar la sintaxis mas corta (mas legible)
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` php
    $request->session()->get('cart');
    $request->input('name');
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` php
    session('cart');
    $request->name;
@@ -90,11 +93,12 @@ Mas ejemplos:
 | ->select('id', 'name')->get()                                        | ->get(['id', 'name'])                            |
 | ->first()->name                                                      | ->value('name')                                  |
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.2. Principio de responsabilidad unica
+### 1.1. Principio de responsabilidad unica
 
 Una clase y metodo solo deben tener una responsabilidad.
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    public function getFullNameAttribute()
    {
@@ -105,7 +109,8 @@ Una clase y metodo solo deben tener una responsabilidad.
       }
    }
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    public function getFullNameAttribute()
    {
@@ -128,12 +133,13 @@ Una clase y metodo solo deben tener una responsabilidad.
    }
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.3. FAT MODELS, SKINNY CONTROLLERS
+### 1.3. FAT MODELS, SKINNY CONTROLLERS
 
 Pon tooooooooodo el DB binding en los modelos de elocuent o en una clase Repositorio ya sea usando querybuilder o rawsql:
 
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    public function index()
    {
@@ -146,7 +152,8 @@ Pon tooooooooodo el DB binding en los modelos de elocuent o en una clase Reposit
       return view('index', ['clients' => $clients]);
    }
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    public function index()
    {
@@ -166,11 +173,12 @@ Pon tooooooooodo el DB binding en los modelos de elocuent o en una clase Reposit
    }
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.4. Validacion
+### 1.4. Validacion
 
 No dejes las validaciones en el controlador, crea clases para ello:
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    public function store(Request $request)
    {
@@ -183,7 +191,8 @@ No dejes las validaciones en el controlador, crea clases para ello:
       ....
    }
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    public function store(PostRequest $request)
    {
@@ -203,11 +212,12 @@ No dejes las validaciones en el controlador, crea clases para ello:
    }
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.5. La logica de negocio deve ir en una clase de Servicio
+### 1.5. La logica de negocio deve ir en una clase de Servicio
 
 Un controlador solo debe tener una responsabilidad, asi que mueve esa logica a una clase de Servicio
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    public function store(Request $request)
    {
@@ -218,7 +228,8 @@ Un controlador solo debe tener una responsabilidad, asi que mueve esa logica a u
       ....
    }
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    public function store(Request $request)
    {
@@ -238,11 +249,12 @@ Un controlador solo debe tener una responsabilidad, asi que mueve esa logica a u
    }
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.6. No te repitas
+### 1.6. No te repitas
 
 Reusa el codigo todo lo posible. SPR te ayuda a evitar la duplicacion. Por cierto reusa en todos lugares (Blade templates, Eloquent scopes etc.)
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    public function getActive()
    {
@@ -256,7 +268,8 @@ Reusa el codigo todo lo posible. SPR te ayuda a evitar la duplicacion. Por ciert
          })->get();
    }
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    public function scopeActive($q)
    {
@@ -276,11 +289,12 @@ Reusa el codigo todo lo posible. SPR te ayuda a evitar la duplicacion. Por ciert
    }
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.7. Haz preferente Elocuent vs Query Builder o rawSQL. Tanto como colecciones por encima de arrays.
+### 1.7. Haz preferente Elocuent vs Query Builder o rawSQL. Tanto como colecciones por encima de arrays.
 
 Eloquent te ayuda a escribir codigo mas legible y mantenible. Ademas teniendo funcionalidades especificas que te ayudan a realizar tus tareas (softdeletes, events, scopes, etc.)
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` SQL
    SELECT *
     FROM `articles`
@@ -295,14 +309,16 @@ Eloquent te ayuda a escribir codigo mas legible y mantenible. Ademas teniendo fu
     AND `active` = '1'
     ORDER BY `created_at` DESC
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    Article::has('user.profile')->verified()->latest()->get();
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.8. Asignacion en masa
+### 1.8. Asignacion en masa
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    $article = new Article;
    $article->title = $request->title;
@@ -312,13 +328,14 @@ Eloquent te ayuda a escribir codigo mas legible y mantenible. Ademas teniendo fu
    $article->category_id = $category->id;
    $article->save();
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    $category->article()->create($request->all());
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
 
-### 2.9. NO EJECUTES QUERIES EN LOS ARCHIVOS BLADE CAUSAN EL (N + 1)
+### 1.9. NO EJECUTES QUERIES EN LOS ARCHIVOS BLADE CAUSAN EL (N + 1)
 
 **Mal (para 100 usuarios la query se ejecutará 101 veces 😭)**
 ``` PHP
@@ -336,26 +353,29 @@ Eloquent te ayuda a escribir codigo mas legible y mantenible. Ademas teniendo fu
    @endforeach
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.10. Comenta tu codigo, pero haz preferente que el metodo y variables sean descriptivos
+### 1.10. Comenta tu codigo, pero haz preferente que el metodo y variables sean descriptivos
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    if (count((array) $builder->getQuery()->joins) > 0)
 ```
-**Mejor**
+<b style="color:blue">Mejor</b>
 ``` PHP
    // Determine if there are any joins.
    if (count((array) $builder->getQuery()->joins) > 0)
 
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    if ($this->hasJoins())
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.11. Usa archivos de configuracion, lenguaje y constantes en lugar de hardcodear texto en el codigo
+### 1.11. Usa archivos de configuracion, lenguaje y constantes en lugar de hardcodear texto en el codigo
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    public function isNormal()
    {
@@ -364,7 +384,8 @@ Eloquent te ayuda a escribir codigo mas legible y mantenible. Ademas teniendo fu
 
    return back()->with('message', 'Your article has been added!');
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    public function isNormal()
    {
@@ -374,7 +395,7 @@ Eloquent te ayuda a escribir codigo mas legible y mantenible. Ademas teniendo fu
    return back()->with('message', __('app.article_added'));
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.12. Usa dentro de lo posible los paquetes y herramientas aceptadas por la comunidad
+### 1.11. Usa dentro de lo posible los paquetes y herramientas aceptadas por la comunidad
 
 | Tarea                     | Standard                               |
 | ------------------------- | -------------------------------------- |
@@ -398,16 +419,18 @@ Eloquent te ayuda a escribir codigo mas legible y mantenible. Ademas teniendo fu
 | Task scheduling           | Laravel Task Scheduler                 |
 | DB                        | MySQL, PostgreSQL, SQLite, SQL Server  |
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.13. Usa IoC containers o facades en lugar de nuevas clases
+### 1.13. Usa IoC containers o facades en lugar de nuevas clases
 
 La sintaxis new Class crea acoplamiento entre clases y complicados testeos. Usa IoC containers o facades en lugar de ello.
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    $user = new User;
    $user->create($request->all());
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    public function __construct(User $user)
    {
@@ -419,15 +442,17 @@ La sintaxis new Class crea acoplamiento entre clases y complicados testeos. Usa 
    $this->user->create($request->all());
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.14. No traigas datos directamente del .env
+### 1.14. No traigas datos directamente del .env
 
 En laravel puedes pasar los datos usando el config() helper para usar datos en la aplicacion.
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    $apiKey = env('API_KEY');
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    // config/api.php
       'key' => env('API_KEY'),
@@ -436,15 +461,17 @@ En laravel puedes pasar los datos usando el config() helper para usar datos en l
       $apiKey = config('api.key');
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.15. No traigas datos directamente del .env
+### 1.15. No traigas datos directamente del .env
 
 En laravel puedes pasar los datos usando el config() helper para usar datos en la aplicacion.
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    $apiKey = env('API_KEY');
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    // config/api.php
       'key' => env('API_KEY'),
@@ -453,15 +480,17 @@ En laravel puedes pasar los datos usando el config() helper para usar datos en l
       $apiKey = config('api.key');
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.16. No traigas datos directamente del .env
+### 1.16. No traigas datos directamente del .env
 
 En laravel puedes pasar los datos usando el config() helper para usar datos en la aplicacion.
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    $apiKey = env('API_KEY');
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    // config/api.php
       'key' => env('API_KEY'),
@@ -470,9 +499,10 @@ En laravel puedes pasar los datos usando el config() helper para usar datos en l
       $apiKey = config('api.key');
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.17. Guarda las fechas en formato standard. Usa mutadores y accesos para modificarlo.
+### 1.17. Guarda las fechas en formato standard. Usa mutadores y accesos para modificarlo.
 
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    // Model
     protected $dates = ['ordered_at', 'created_at', 'updated_at']
@@ -485,15 +515,17 @@ En laravel puedes pasar los datos usando el config() helper para usar datos en l
     {{$created}}
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.18. Nunca pongas logica dentro de los archivos de ruta y nombralas
+### 1.18. Nunca pongas logica dentro de los archivos de ruta y nombralas
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    Route::get('/users', function(){
       return view('users.index',['users',User::all()]);
    });
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    // UserController
       public function index() {
@@ -503,9 +535,10 @@ En laravel puedes pasar los datos usando el config() helper para usar datos en l
       Route::get('/users', 'UserController@index')->name('users-index');
 ```
 [🔝 Volvamos arriba](#laravel-cleancode)
-### 2.19. Minimiza el uso de PHP vanilla en las plantillas blade
+### 1.19. Minimiza el uso de PHP vanilla en las plantillas blade
 
-**Mal**
+<b style="color:red">Mal</b>
+
 ``` PHP
    <head>
    </head>
@@ -521,7 +554,8 @@ En laravel puedes pasar los datos usando el config() helper para usar datos en l
       <?php } ?>
    </body>
 ```
-**Bien**
+<b style="color:green">Bien</b>
+
 ``` PHP
    <head>
    </head>
@@ -536,6 +570,13 @@ En laravel puedes pasar los datos usando el config() helper para usar datos en l
 
    </body>
 ```
+[🔝 Volvamos arriba](#laravel-cleancode)
+## 2. Inserta este gitignore siempre en tu proyecto
+
+[.gitignore](https://www.toptal.com/developers/gitignore/api/intellij+all,visualstudio,visualstudiocode,sublimetext,laravel)
+
+Esto servirá para evitar que las carpetas de los editores de texto queden excluidas, a parte de todas las innecesarias de laravel.
+
 [🔝 Volvamos arriba](#laravel-cleancode)
 
 Esta en proceso de estructuracion así que se seguiran añadiendo cositas
